@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block nav %}
+<div class="navbar bg-primary text-primary-content sticky top-0 z-50"  style="background-color: #fbb034;">
+  <div class="flex-1">
+    <a href="{% url 'home' %}" class="btn btn-ghost normal-case text-xl" style="color: black;"> آجیل و خشکبار کیمیا</a>
+  </div>
+  <div class="flex-none" >
+    
+    <style>
+      *{
+         font-family:'none' !important;
+      }
+    </style>
+    <div class="dropdown dropdown-end" >
+      <label tabindex="0" class="btn btn-ghost"><i class="fa-solid fa-bars"></i></label>
+      <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+        <li>{% if not user.is_superuser %}
+          <a href="{% url 'orderList' %}" class="text-primary">
+            <i class="fa-solid fa-basket-shopping"></i>
+            پیگیری خرید ها
+          </a>
+          {% endif %}</a></li>
+        <li><a href="{% url 'logout' %}" class="text-primary">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          خروج از حساب 
+        </a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-5xl mx-auto px-5">
+  {% block content %}
+  {% endblock content %}
+</div>
+
+{% endblock nav %}
